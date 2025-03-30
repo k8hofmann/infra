@@ -51,6 +51,18 @@ resource "hcloud_server" "wonderland_server" {
   depends_on = [
     hcloud_network_subnet.network_1_subnet_eu_central
   ]
+
+  provisioner "file" {
+    source      = "${path.module}/scripts/setup_wireguard.sh"
+    destination = "/root/setup_wireguard.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /root/setup_wireguard.sh",
+      "/root/setup_wireguard.sh"
+    ]
+  }
 }
 
 resource "hcloud_network" "network_1" {

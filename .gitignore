@@ -1,2 +1,19 @@
-# Ignore Terraform variable files
+.terraform
 *.tfvars
+*.tfplan
+*.tfstate
+*.tfstate.backup
+*.tfvars.json
+*.tfvars.json.lock
+*.tfvars.json.lock.lock
+
+.env
+**/credentials.json
+**/*.pem
+**/*.key
+
+**/wireguard/*.conf
+**/wireguard/*.key
+
+.DS_Store
+.vscode/
