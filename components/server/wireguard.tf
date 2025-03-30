@@ -1,6 +1,18 @@
 resource "hcloud_firewall" "wireguard" {
   name = "wireguard"
 
+  # SSH access
+  rule {
+    direction = "in"
+    protocol  = "tcp"
+    port      = "22"
+    source_ips = [
+      "0.0.0.0/0",
+      "::/0"
+    ]
+  }
+
+  # WireGuard access
   rule {
     direction = "in"
     protocol  = "udp"
